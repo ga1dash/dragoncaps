@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonCaps</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(90deg, #ffffff, #30000c);
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: auto;
+        }
+        .search-container {
+            padding: 10px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            flex: 1;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(131, 102, 102, 0.3);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .product-card p {
+            font-size: 1em;
+            color: #555;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .product-card a {
+            display: inline-block;
+            background: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        .product-card a:hover {
+            background: #c0392b;
+        }
+        footer {
+            background: #690319;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 1em;
+            margin-top: auto;
+            border-radius: 0 0 20px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dragon Caps</h1>
+</header>
+
+<!-- Пошук та фільтр -->
+<div class="search-container">
+    <input type="text" id="search" placeholder="Пошук за назвою..." oninput="filterProducts()">
+    <select id="price-filter" onchange="filterProducts()">
+        <option value="">Фільтрувати за ціною</option>
+        <option value="0-3000">До 3000 UAH</option>
+        <option value="3000-3500">3000 - 3500 UAH</option>
+        <option value="3500+">Більше 3500 UAH</option>
+    </select>
+</div>
+
+<div class="container">
+    <div class="product-grid" id="product-grid">
+        <div class="product-card" data-name="Клавіатура AJAZZ AK820" data-price="2799">
+            <img src="https://cdn.27.ua/sc--media--prod/default/03/f6/60/03f660b2-a9de-4f72-a0a1-ebe63d7124c4.jpg" alt="Клавіатура 1">
+            <h3>Клавіатура AJAZZ AK820</h3>
+            <p>Ігрова-Механічна клавіатура для геймерів</p>
+            <p class="price">2 799 UAH</p>
+            <a href="ak820.html">Детальніше</a>
+        </div>
+
+        <div class="product-card" data-name="Клавіатура AJAZZ AK680 MAX" data-price="2999">
+            <img src="https://www.mechlands.com/cdn/shop/files/IMG_6003.png?v=1734683961" alt="Клавіатура 2">
+            <h3>Клавіатура AJAZZ AK680 MAX</h3>
+            <p>Ігрова-Механічна клавіатура для геймерів</p>
+            <p class="price">2 999 UAH</p>
+            <a href="ak680.html">Детальніше</a>
+        </div>
+
+        <div class="product-card" data-name="Клавіатура ACE 60" data-price="3199">
+            <img src="https://www.mchose.store/cdn/shop/files/18_5d8fd206-cccb-48cd-a3e6-9a1679726182.png?v=1736853127&width=2000" alt="Клавіатура 3">
+            <h3>Клавіатура ACE 60</h3>
+            <p>Ігрова-Механічна клавіатура для геймерів</p>
+            <p class="price">3 199 UAH</p>
+            <a href="ace60.html">Детальніше</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Dragon Caps. Всі права захищені.</p>
+</footer>
+
+<script>
+    function filterProducts() {
+        const searchTerm = document.getElementById("search").value.toLowerCase();
+        const priceFilter = document.getElementById("price-filter").value;
+        const products = document.querySelectorAll(".product-card");
+        
+        products.forEach(product => {
+            const name = product.getAttribute("data-name").toLowerCase();
+            const price = parseInt(product.getAttribute("data-price"));
+            let showProduct = name.includes(searchTerm);
+            
+            if (priceFilter) {
+                const [minPrice, maxPrice] = priceFilter.split('-').map(val => val === '+' ? Infinity : parseInt(val));
+                showProduct = showProduct && (price >= minPrice && price <= maxPrice);
+            }
+
+            product.style.display = showProduct ? "block" : "none";
+        });
+    }
+</script>
+
+</body>
+</html>

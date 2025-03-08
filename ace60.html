@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клавіатура ACE 60</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .product-image {
+            max-width: 40%;
+            height: auto;
+            border-radius: 12px;
+        }
+        .details {
+            flex: 1;
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .buy-button {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+        .buy-button:hover {
+            background: #c0392b;
+        }
+        .review-section {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        .submit-review {
+            background: #16213e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        .submit-review:hover {
+            background: #1a1a2e;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://www.mchose.store/cdn/shop/files/18_5d8fd206-cccb-48cd-a3e6-9a1679726182.png?v=1736853127&width=2000" alt="Клавіатура ACE 60" class="product-image">
+    
+    <div class="details">
+        <h1>Клавіатура ACE 60</h1>
+        <h2>Характеристики:</h2>
+        <ul>
+            <li>Механічні перемикачі Gateron</li>
+            <li>Підключення: Bluetooth / USB</li>
+            <li>RGB-підсвічування</li>
+            <li>60% компоновка</li>
+            <li>Алюмінієвий корпус</li>
+        </ul>
+        
+        <button class="buy-button">Купити</button>
+
+        <div class="review-section">
+            <h2>Залишити відгук:</h2>
+            <textarea placeholder="Напишіть свій відгук тут..."></textarea>
+            <br>
+            <button class="submit-review">Надіслати</button>
+        </div>
+
+        <a href="index.html" class="back-link">← Назад до магазину</a>
+    </div>
+</div>
+
+</body>
+</html>
