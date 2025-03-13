@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCHOSE ACE 60 - DragonCaps</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background: linear-gradient(90deg, #ffffff, #30000c);
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .product-details {
+            display: flex;
+            gap: 30px;
+        }
+        .product-images {
+            max-width: 40%;
+            position: relative;
+        }
+        .product-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .product-images img.active {
+            display: block;
+        }
+        .image-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5em;
+            transition: background 0.3s ease;
+        }
+        .image-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .image-nav.prev {
+            left: 10px;
+        }
+        .image-nav.next {
+            right: 10px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .tab.active {
+            background: #e74c3c;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .specifications ul {
+            list-style: none;
+            padding: 0;
+        }
+        .specifications ul li {
+            margin: 10px 0;
+            font-size: 0.9em; /* Зменшений шрифт */
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .reviews .review-item {
+            background: #800020;
+            color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .reviews textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        .reviews .submit-review {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        .reviews .submit-review:hover {
+            background: #c0392b;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #e74c3c;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #c0392b;
+        }
+        .stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .star {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .star.selected {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MCHOSE ACE 60</h1>
+</header>
+
+<div class="container">
+    <div class="product-details">
+        <div class="product-images">
+            <img src="https://img.telemart.ua/743871-918950/mchose-ace-60-pro-rgb-ktek-magnetic-switch-mc-ace60-4a-black.jpg" alt="MCHOSE ACE 60" class="active">
+            <img src="https://example.com/image2.jpg" alt="MCHOSE ACE 60 Photo 2">
+            <img src="https://example.com/image3.jpg" alt="MCHOSE ACE 60 Photo 3">
+            <button class="image-nav prev" onclick="prevImage()">&#10094;</button>
+            <button class="image-nav next" onclick="nextImage()">&#10095;</button>
+        </div>
+        <div class="product-info">
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('specifications')">Характеристики</div>
+                <div class="tab" onclick="switchTab('reviews')">Відгуки</div>
+            </div>
+            <div class="tab-content active" id="specifications">
+                <div class="specifications">
+                    <ul>
+                        <li><strong>Тип:</strong> Ігрова-Механічна клавіатура</li>
+                        <li><strong>Перемикачі:</strong> Gateron Yellow</li>
+                        <li><strong>Підключення:</strong> Bluetooth / USB</li>
+                        <li><strong>Підсвітка:</strong> RGB з 16.8 мільйонами кольорів</li>
+                        <li><strong>Компоновка:</strong> 64%</li>
+                        <li><strong>Корпус:</strong> Алюмінієвий, анодований</li>
+                        <li><strong>Вага:</strong> 650 г</li>
+                        <li><strong>Розміри:</strong> 310 x 110 x 40 мм</li>
+                        <li><strong>Матеріал клавіш:</strong> PBT, подвійне лиття</li>
+                        <li><strong>Підтримка ОС:</strong> Windows, macOS, Linux</li>
+                        <li><strong>Акумулятор:</strong> 2000 мАг (до 200 годин роботи)</li>
+                        <li><strong>Додатково:</strong> Програмовані клавіші, магнітні перемикачі</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="reviews">
+                <div class="reviews">
+                    <div id="reviews-list">
+                        <!-- Відгуки будуть додаватися сюди -->
+                    </div>
+                    <textarea id="review-text" placeholder="Напишіть свій відгук тут..."></textarea>
+                    <div class="stars" id="rating-stars">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <button class="submit-review" onclick="submitReview()">Надіслати відгук</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="index.html" class="back-link">← Назад до магазину</a>
+</div>
+
+<script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.product-images img');
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    }
+
+    let selectedRating = 0;
+
+    // Виділення зірок при кліку
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.getAttribute('data-value'));
+            highlightStars(selectedRating);
+        });
+    });
+
+    // Функція для виділення зірок
+    function highlightStars(rating) {
+        const stars = document.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            if (index < rating) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+    }
+
+    // Функція для збереження відгуку
+    function submitReview() {
+        const reviewText = document.getElementById('review-text').value.trim();
+        if (reviewText && selectedRating > 0) {
+            const review = {
+                text: reviewText,
+                rating: selectedRating,
+                date: new Date().toLocaleDateString()
+            };
+
+            // Збереження відгуку у localStorage
+            let reviews = JSON.parse(localStorage.getItem('reviews-mchoseace60')) || [];
+            reviews.push(review);
+            localStorage.setItem('reviews-mchoseace60', JSON.stringify(reviews));
+
+            // Оновлення списку відгуків
+            displayReviews();
+            document.getElementById('review-text').value = '';
+            selectedRating = 0;
+            highlightStars(0);
+        } else {
+            alert('Будь ласка, введіть відгук та оберіть рейтинг!');
+        }
+    }
+
+    // Функція для відображення відгуків
+    function displayReviews() {
+        const reviewsList = document.getElementById('reviews-list');
+        reviewsList.innerHTML = '';
+        const reviews = JSON.parse(localStorage.getItem('reviews-mchoseace60')) || [];
+
+        reviews.forEach(review => {
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            reviewItem.innerHTML = `
+                <div class="stars">
+                    ${'★'.repeat(review.rating).split('').map(() => '<span class="star selected">★</span>').join('')}
+                </div>
+                <p><strong>Користувач:</strong> ${review.text}</p>
+                <p><small>Дата: ${review.date}</small></p>
+            `;
+            reviewsList.appendChild(reviewItem);
+        });
+    }
+
+    // Відображення відгуків при завантаженні сторінки
+    displayReviews();
+</script>
+
+</body>
+</html>
