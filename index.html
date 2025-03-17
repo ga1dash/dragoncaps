@@ -13,6 +13,7 @@
             padding: 0;
             display: flex;
             min-height: 100vh;
+            position: relative;
         }
         .sidebar {
             width: 250px;
@@ -22,6 +23,14 @@
             box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: 100%;
+            z-index: 1000;
+            transform: translateX(-250px);
+        }
+        .sidebar.active {
+            transform: translateX(0);
         }
         .sidebar h2 {
             font-size: 1.8em;
@@ -58,6 +67,11 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+        .main-content.shifted {
+            margin-left: 250px;
         }
         header {
             background: linear-gradient(90deg, #ffffff, #30000c);
@@ -227,11 +241,30 @@
             border-color: #e74c3c;
             outline: none;
         }
+        .toggle-sidebar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+            z-index: 1001;
+            transition: background 0.3s ease;
+        }
+        .toggle-sidebar:hover {
+            background: #c0392b;
+        }
     </style>
 </head>
 <body>
 
-<div class="sidebar">
+<button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar" id="sidebar">
     <h2>DragonCaps</h2>
     <ul>
         <li><a href="#"><i class="fas fa-fire"></i> Акції</a></li>
@@ -244,7 +277,7 @@
     </ul>
 </div>
 
-<div class="main-content">
+<div class="main-content" id="main-content">
     <header>
         <h1>Dragon Caps</h1>
     </header>
@@ -275,7 +308,7 @@
             <div class="product-card" data-name="Клавіатура AJAZZ AK820" data-price="2799" data-category="Ігрові">
                 <img src="https://img.telemart.ua/743871-918950/mchose-ace-60-pro-rgb-ktek-magnetic-switch-mc-ace60-4a-black.jpg" alt="Клавіатура 1">
                 <h3>Клавіатура MCHOSE ACE 60</h3>
-                <p>Ігрова-Механічна клавіатура для геймерів</p>
+                <p>Магнітна клавіатура для геймерів</p>
                 <p class="price">1 499 UAH</p>
                 <div class="availability">
                     <span class="dot"></span> У наявності
@@ -369,6 +402,13 @@
 
             product.style.display = showProduct ? "block" : "none";
         });
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        sidebar.classList.toggle("active");
+        mainContent.classList.toggle("shifted");
     }
 </script>
 
